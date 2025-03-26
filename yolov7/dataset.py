@@ -37,7 +37,7 @@ def create_yolov7_transforms(
             image_size[0],
             image_size[1],
             border_mode=0,
-            value=(114, 114, 114),
+            fill=(114, 114, 114),
         ),
     ]
 
@@ -86,7 +86,8 @@ class Yolov7Dataset(Dataset):
         )
 
         if self.transforms is not None:
-            transformed = self.transforms(image=image, bboxes=boxes, labels=classes)
+            transformed = self.transforms(
+                image=image, bboxes=boxes, labels=classes)
             image = transformed["image"]
             boxes = np.array(transformed["bboxes"])
             classes = np.array(transformed["labels"])
@@ -95,7 +96,8 @@ class Yolov7Dataset(Dataset):
 
         if len(boxes) != 0:
             # filter boxes with 0 area in any dimension
-            valid_boxes = (boxes[:, 2] > boxes[:, 0]) & (boxes[:, 3] > boxes[:, 1])
+            valid_boxes = (boxes[:, 2] > boxes[:, 0]) & (
+                boxes[:, 3] > boxes[:, 1])
             boxes = boxes[valid_boxes]
             classes = classes[valid_boxes]
 
