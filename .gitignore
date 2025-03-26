@@ -7,3 +7,5 @@
 /cars_dataset/
 /trained_models/
 /data/*
+examples/batches/
+bkp
