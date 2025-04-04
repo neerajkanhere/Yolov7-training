@@ -9,7 +9,10 @@ from yolov7 import create_yolov7_model
 model = create_yolov7_model(architecture="yolov7-tiny", num_classes=7, pretrained=False)
 
 # 2. Load the state_dict (replace 'model_state.pth' with your path)
-loaded = torch.load('/home/tvdev/Yolov7-training/examples/best_model.pt')
+if torch.cuda.is_available():
+      loaded = torch.load('best_model.pt')
+else:
+      loaded = torch.load('best_model.pt', map_location=torch.device('cpu'))
 model.load_state_dict(loaded['model_state_dict'])
 
 # 3. Set to evaluation mode
