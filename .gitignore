@@ -3,6 +3,7 @@
 *.pyc
 *.pt
 *.onnx
+\.env
 /model_configs/
 /coco_dataset/
 **/.ipynb_checkpoints/
