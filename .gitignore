@@ -2,6 +2,7 @@
 *.iml
 *.pyc
 *.pt
+*.onnx
 /model_configs/
 /coco_dataset/
 **/.ipynb_checkpoints/
