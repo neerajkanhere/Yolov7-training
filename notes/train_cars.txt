@@ -1,1 +1,34 @@
 examples/train_cars.txt
+
+Pandas DataFrame
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html
+
+
+annotations format:
+filename 	width 	height 	class 	xmin 	ymin 	xmax 	ymax
+
+
+
+----------------------------------------------------
+yolov7/loss.py
+def find_center_prior
+
+OTA: Optimal Transport Assignment for Object Detection
+
+----------------------------------------------------
+convert into box format that yolo expects
+yolov7/dataset.py: 104
+boxes = torchvision.ops.box_convert(
+    torch.as_tensor(boxes, dtype=torch.float32), "xyxy", "cxcywh"
+)
+
+
+
+----------------------------------------------------
+yolov7/trainer.py
+def calculate_train_batch_loss(self, batch) -> dict:
+    images, labels = batch[0], batch[1]
+
+    # batch[1][N]: [image_index_in_batch, class, x, y, w, h]
+
+    fpn_heads_outputs = self.model(images)
